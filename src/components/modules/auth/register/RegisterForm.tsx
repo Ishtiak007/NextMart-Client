@@ -97,8 +97,12 @@ const RegisterForm = () => {
             )}
           />
 
-          <Button type="submit" className="mt-5 w-full">
-            Regiater
+          <Button
+            disabled={!!passwordConfirm && password !== passwordConfirm}
+            type="submit"
+            className="mt-5 w-full"
+          >
+            Register
           </Button>
         </form>
       </Form>
