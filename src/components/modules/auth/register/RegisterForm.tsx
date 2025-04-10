@@ -11,12 +11,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 const RegisterForm = () => {
   const form = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
   };
   return (
@@ -84,7 +84,9 @@ const RegisterForm = () => {
             )}
           />
 
-          <Button type="submit" className="mt-5 w-full"></Button>
+          <Button type="submit" className="mt-5 w-full">
+            Regiater
+          </Button>
         </form>
       </Form>
       <p className="text-sm text-gray-600 text-center my-3">
