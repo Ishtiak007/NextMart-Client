@@ -17,7 +17,7 @@ interface IUserProviderValues {
 
 const userContext = createContext<IUserProviderValues | undefined>(undefined);
 
-const UserProvider = ({ childern }: { childern: React.ReactNode }) => {
+const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<IUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const handleUser = async () => {
@@ -30,7 +30,7 @@ const UserProvider = ({ childern }: { childern: React.ReactNode }) => {
   }, [isLoading]);
   return (
     <userContext.Provider value={{ user, setUser, isLoading, setIsLoading }}>
-      {childern}
+      {children}
     </userContext.Provider>
   );
 };
