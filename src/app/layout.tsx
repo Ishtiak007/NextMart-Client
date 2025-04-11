@@ -17,7 +17,7 @@ export default async function RootLayout({
     <Providers>
       <html lang="en" data-theme="light">
         <body>
-          <Toaster position="top-center" />
+          <Toaster richColors position="top-center" />
           <div>{children}</div>
         </body>
       </html>
