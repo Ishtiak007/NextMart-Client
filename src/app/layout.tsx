@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "sonner";
+import Providers from "@/providers/Providers";
 
 export const metadata: Metadata = {
   title: "Next Mart",
@@ -13,11 +14,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light">
-      <body>
-        <Toaster position="top-center" />
-        <div>{children}</div>
-      </body>
-    </html>
+    <Providers>
+      <html lang="en" data-theme="light">
+        <body>
+          <Toaster position="top-center" />
+          <div>{children}</div>
+        </body>
+      </html>
+    </Providers>
   );
 }
