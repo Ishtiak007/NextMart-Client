@@ -14,8 +14,11 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Logo from "@/app/assets/svgs/Logo";
 import { Textarea } from "@/components/ui/textarea";
 import NMImageUploader from "@/components/ui/core/NMImageUploader";
+import { useState } from "react";
 
 export default function CreateShopForm() {
+  const [imageFiles, setImageFiles] = useState<File[] | []>([]);
+
   const form = useForm();
 
   const {
@@ -196,7 +199,10 @@ export default function CreateShopForm() {
               />
             </div>
             <div>
-              <NMImageUploader />
+              <NMImageUploader
+                imageFiles={imageFiles}
+                setImageFiles={setImageFiles}
+              />
             </div>
           </div>
 
