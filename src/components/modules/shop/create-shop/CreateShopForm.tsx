@@ -15,6 +15,7 @@ import Logo from "@/app/assets/svgs/Logo";
 import { Textarea } from "@/components/ui/textarea";
 import NMImageUploader from "@/components/ui/core/NMImageUploader";
 import { useState } from "react";
+import ImagePreviewer from "@/components/ui/core/NMImageUploader/ImagePreviewer";
 
 export default function CreateShopForm() {
   const [imageFiles, setImageFiles] = useState<File[] | []>([]);
@@ -200,11 +201,22 @@ export default function CreateShopForm() {
               />
             </div>
             <div>
-              <NMImageUploader
-                setImageFiles={setImageFiles}
-                setImagePreview={setImagePreview}
-                label="Upload Logo"
-              />
+              {imagePreview.length > 0 ? (
+                <ImagePreviewer
+                  setImageFiles={setImageFiles}
+                  imagePreview={imagePreview}
+                  setImagePreview={setImagePreview}
+                  className="mt-6"
+                />
+              ) : (
+                <div className="mt-6">
+                  <NMImageUploader
+                    setImageFiles={setImageFiles}
+                    setImagePreview={setImagePreview}
+                    label="Upload Logo"
+                  />
+                </div>
+              )}
             </div>
           </div>
 
