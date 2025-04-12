@@ -11,8 +11,9 @@ export const createShop = async (data: FormData) => {
       },
       body: data,
     });
+
     return res.json();
-  } catch (err: any) {
-    return Error(err);
+  } catch (error: any) {
+    return Error(error);
   }
 };
