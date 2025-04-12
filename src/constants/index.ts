@@ -1,4 +1,4 @@
-export const protectedRoute = () => [
+export const protectedRoutes = [
   "/login",
   "/create-shop",
   "/admin",

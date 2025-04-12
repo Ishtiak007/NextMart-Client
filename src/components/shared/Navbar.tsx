@@ -1,4 +1,8 @@
 "use client";
+import Logo from "@/app/assets/svgs/Logo";
+import { Button } from "../ui/button";
+import { Heart, LogOut, ShoppingBag } from "lucide-react";
+import Link from "next/link";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,27 +12,32 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-import Logo from "@/app/assets/svgs/Logo";
-import { Button } from "../ui/button";
-import { Heart, LogOut, ShoppingBag } from "lucide-react";
-import Link from "next/link";
 import { logout } from "@/services/AuthService";
 import { useUser } from "@/context/UserContext";
+import { usePathname, useRouter } from "next/navigation";
+import { protectedRoutes } from "@/constants";
 
 export default function Navbar() {
   const { user, setIsLoading } = useUser();
-  const handleLogout = () => {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogOut = () => {
     logout();
     setIsLoading(true);
+    if (protectedRoutes.some((route) => pathname.match(route))) {
+      router.push("/");
+    }
   };
+
   return (
     <header className="border-b w-full">
-      <div className="container flex justify-between items-center mx-auto h-16 px-5">
-        <h1 className="text-2xl font-black flex items-center">
-          <Logo />
-          Next Mart
-        </h1>
+      <div className="container flex justify-between items-center mx-auto h-16 px-3">
+        <Link href="/">
+          <h1 className="text-2xl font-black flex items-center">
+            <Logo /> Next Mart
+          </h1>
+        </Link>
         <div className="max-w-md  flex-grow">
           <input
             type="text"
@@ -49,6 +58,7 @@ export default function Navbar() {
               <Link href="/create-shop">
                 <Button className="rounded-full">Create Shop</Button>
               </Link>
+
               <DropdownMenu>
                 <DropdownMenuTrigger>
                   <Avatar>
@@ -56,7 +66,7 @@ export default function Navbar() {
                     <AvatarFallback>User</AvatarFallback>
                   </Avatar>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="mx-4">
+                <DropdownMenuContent>
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>Profile</DropdownMenuItem>
@@ -64,11 +74,11 @@ export default function Navbar() {
                   <DropdownMenuItem>My Shop</DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
-                    className="text-red-500 font-medium cursor-pointer"
-                    onClick={handleLogout}
+                    className="bg-red-500 cursor-pointer"
+                    onClick={handleLogOut}
                   >
                     <LogOut />
-                    <span>Logout</span>
+                    <span>Log Out</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
