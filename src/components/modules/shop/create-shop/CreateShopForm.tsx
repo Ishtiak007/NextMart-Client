@@ -18,6 +18,7 @@ import { useState } from "react";
 
 export default function CreateShopForm() {
   const [imageFiles, setImageFiles] = useState<File[] | []>([]);
+  const [imagePreview, setImagePreview] = useState<string[] | []>([]);
 
   const form = useForm();
 
@@ -200,8 +201,9 @@ export default function CreateShopForm() {
             </div>
             <div>
               <NMImageUploader
-                imageFiles={imageFiles}
                 setImageFiles={setImageFiles}
+                setImagePreview={setImagePreview}
+                label="Upload Logo"
               />
             </div>
           </div>
