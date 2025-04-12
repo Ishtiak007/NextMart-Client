@@ -38,9 +38,10 @@ export default function CreateShopForm() {
       servicesOffered: servicesOffered,
       establishedYear: Number(data?.establishedYear),
     };
-    console.log(modifiedData);
     try {
-      console.log(data);
+      const formData = new FormData();
+      formData.append("data", JSON.stringify(modifiedData));
+      formData.append("logo", imageFiles[0] as File);
     } catch (err: any) {
       console.error(err);
     }
