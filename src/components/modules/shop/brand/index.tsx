@@ -6,9 +6,9 @@ import Image from "next/image";
 import { useState } from "react";
 import CreateBrandModal from "./CreateBrandModal";
 import { toast } from "sonner";
+import DeleteConfirmationModal from "@/components/ui/core/NMModal/DeleteConfirmationModal";
 import { IBrand } from "@/types";
 import { deleteBrand } from "@/services/Brand";
-import DeleteConfirmationModal from "@/components/ui/core/NMModal/DeleteConfirmationModal";
 
 const ManageBrands = ({ brands }: { brands: IBrand[] }) => {
   const [isModalOpen, setModalOpen] = useState(false);
