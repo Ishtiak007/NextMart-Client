@@ -1,7 +1,7 @@
 import React from "react";
 import CreateCategoryModal from "./CreateCategoryModal";
 
-const ManageCategories = () => {
+const ManageCategories = ({ categories }) => {
   return (
     <div>
       <div className="flex items-center justify-between">
