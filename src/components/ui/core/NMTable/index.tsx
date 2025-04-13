@@ -32,7 +32,7 @@ export function NMTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md border">
+    <div className="rounded-md border my-10">
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
