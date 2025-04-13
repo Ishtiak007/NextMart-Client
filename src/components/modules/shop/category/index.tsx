@@ -1,7 +1,12 @@
 import React from "react";
 import CreateCategoryModal from "./CreateCategoryModal";
+import { ICategory } from "@/types";
 
-const ManageCategories = ({ categories }) => {
+type TCategoriesProps = {
+  categories: ICategory[];
+};
+
+const ManageCategories = ({ categories }: TCategoriesProps) => {
   return (
     <div>
       <div className="flex items-center justify-between">
